@@ -25,19 +25,23 @@ finder.innerHTML = `
 `;
 
 const input = document.querySelector('input');
+const dropdown = document.querySelector('.dropdown');
+const resultsWrapper = document.querySelector('.results');
 
 const onInput = async (event) => {
     const movies = await fetchData(event.target.value);
 
+    dropdown.classList.add('is-active');
     for (let movie of movies) {
-        const div = document.createElement('div');
+        const suggestion = document.createElement('a');
 
-        div.innerHTML = `
-            <h1>${movie.Title}</h1>    
+        suggestion.classList.add('dropdown-item');
+        suggestion.innerHTML = `
             <img src="${movie.Poster}"/>
+            ${movie.Title}    
         `;
 
-        document.querySelector('#target').appendChild(div);
+        resultsWrapper.appendChild(suggestion);
     }
 };
 
