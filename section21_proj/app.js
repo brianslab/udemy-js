@@ -1,26 +1,39 @@
-const fetchData = async (searchTerm) => {
-    const response = await axios.get('http://www.omdbapi.com', {
-        params : {
-            apikey : 'e823d88e',
-            s      : searchTerm
+// Generate a dropdown menu list populated with suggestions
+// based on the user's input
+createAutoComplete({
+    // Pick where the list should be
+    root           : document.querySelector('.autocomplete'),
+    // Define how to show each option in the list
+    renderOption(movie) {
+        const imgSrc = movie.Poster === 'N/A' ? '' : movie.Poster;
+        return `
+            <img src="${imgSrc}"/>
+            ${movie.Title} (${movie.Year})   
+        `;
+    },
+    // Define what to do when the user selects an option
+    onOptionSelect(movie) {
+        onMovieSelect(movie);
+    },
+    // Extract the name of the option
+    inputValue(movie) {
+        return movie.Title;
+    },
+    // Make the api call to get options based on search
+    async fetchData(searchTerm) {
+        const response = await axios.get('http://www.omdbapi.com', {
+            params : {
+                apikey : 'e823d88e',
+                s      : searchTerm
+            }
+        });
+
+        if (response.data.Error) {
+            return [];
         }
-    });
 
-    if (response.data.Error) {
-        return [];
+        return response.data.Search;
     }
-
-    return response.data.Search;
-};
-
-createAutoComplete({
-    root : document.querySelector('.autocomplete')
-});
-createAutoComplete({
-    root : document.querySelector('.autocomplete-two')
-});
-createAutoComplete({
-    root : document.querySelector('.autocomplete-three')
 });
 
 const onMovieSelect = async (movie) => {
