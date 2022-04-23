@@ -1,7 +1,7 @@
 // Generate a dropdown menu list populated with suggestions
 // based on the user's input
 createAutoComplete({
-    // Pick where the list should be
+    // Pick where the list should be rendered
     root           : document.querySelector('.autocomplete'),
     // Define how to show each option in the list
     renderOption(movie) {
@@ -15,11 +15,11 @@ createAutoComplete({
     onOptionSelect(movie) {
         onMovieSelect(movie);
     },
-    // Extract the name of the option
+    // Extract the name of the option to the input box
     inputValue(movie) {
         return movie.Title;
     },
-    // Make the api call to get options based on search
+    // Make the api call to get data based on search
     async fetchData(searchTerm) {
         const response = await axios.get('http://www.omdbapi.com', {
             params : {
