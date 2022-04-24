@@ -7,10 +7,6 @@ const autoCompleteConfig = {
             ${movie.Title} (${movie.Year})   
         `;
     },
-    // Define what to do when the user selects an option
-    onOptionSelect(movie) {
-        onMovieSelect(movie);
-    },
     // Extract the name of the option to the input box
     inputValue(movie) {
         return movie.Title;
@@ -37,15 +33,26 @@ const autoCompleteConfig = {
 createAutoComplete({
     ...autoCompleteConfig,
     // Pick where the list should be rendered
-    root : document.querySelector('#left-autocomplete')
+    root           : document.querySelector('#left-autocomplete'),
+    // Define what to do when the user selects an option
+    onOptionSelect(movie) {
+        document.querySelector('.tutorial').classList.add('is-hidden');
+        onMovieSelect(movie, document.querySelector('#left-summary'), 'left');
+    }
 });
 createAutoComplete({
     ...autoCompleteConfig,
     // Pick where the list should be rendered
-    root : document.querySelector('#right-autocomplete')
+    root           : document.querySelector('#right-autocomplete'),
+    onOptionSelect(movie) {
+        document.querySelector('.tutorial').classList.add('is-hidden');
+        onMovieSelect(movie, document.querySelector('#right-summary'), 'right');
+    }
 });
 
-const onMovieSelect = async (movie) => {
+let leftMovie;
+let rightMovie;
+const onMovieSelect = async (movie, summaryElement, side) => {
     const response = await axios.get('http://www.omdbapi.com', {
         params : {
             apikey : 'e823d88e',
@@ -53,7 +60,21 @@ const onMovieSelect = async (movie) => {
         }
     });
 
-    document.querySelector('#summary').innerHTML = movieTemplate(response.data);
+    summaryElement.innerHTML = movieTemplate(response.data);
+
+    if (side === 'left') {
+        leftMovie = response.data;
+    } else {
+        rightMovie = response.data;
+    }
+
+    if (leftMovie && rightMovie) {
+        runComparison();
+    }
+};
+
+const runComparison = () => {
+    console.log('Beginning comparison');
 };
 
 const movieTemplate = (movieDetail) => {
