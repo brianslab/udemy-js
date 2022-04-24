@@ -1,8 +1,4 @@
-// Generate a dropdown menu list populated with suggestions
-// based on the user's input
-createAutoComplete({
-    // Pick where the list should be rendered
-    root           : document.querySelector('.autocomplete'),
+const autoCompleteConfig = {
     // Define how to show each option in the list
     renderOption(movie) {
         const imgSrc = movie.Poster === 'N/A' ? '' : movie.Poster;
@@ -34,6 +30,19 @@ createAutoComplete({
 
         return response.data.Search;
     }
+};
+
+// Generate a dropdown menu lists populated with suggestions
+// based on the user's input
+createAutoComplete({
+    ...autoCompleteConfig,
+    // Pick where the list should be rendered
+    root : document.querySelector('#left-autocomplete')
+});
+createAutoComplete({
+    ...autoCompleteConfig,
+    // Pick where the list should be rendered
+    root : document.querySelector('#right-autocomplete')
 });
 
 const onMovieSelect = async (movie) => {
