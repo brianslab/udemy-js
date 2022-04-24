@@ -73,11 +73,27 @@ const onMovieSelect = async (movie, summaryElement, side) => {
     }
 };
 
-const runComparison = () => {
-    console.log('Beginning comparison');
-};
+const runComparison = () => {};
 
 const movieTemplate = (movieDetail) => {
+    const dollars = parseInt(
+        movieDetail.BoxOffice.replace(/\$/g, '').replace(/,/g, '')
+    );
+    const metascore = parseInt(movieDetail.Metascore);
+    const imdbRating = parseFloat(movieDetail.imdbRating);
+    const imdbFloats = parseInt(movieDetail.imdbVotes.replace(/,/g, ''));
+
+    let awardCount = 0;
+    const awards = movieDetail.Awards.split(' ').forEach((word) => {
+        const value = parseInt(word);
+
+        if (isNaN(value)) {
+            return;
+        } else {
+            awardCount = awardCount + value;
+        }
+    });
+
     return `
         <article class="media">
             <figure class="media-left">
@@ -93,22 +109,27 @@ const movieTemplate = (movieDetail) => {
                 </div>
             </div>
         </article>
+
         <article class="notification is-primarty">
             <p class="title">${movieDetail.Awards}</p>
             <p class="subtitle">Awards</p>
         </article>
+
         <article class="notification is-primarty">
             <p class="title">${movieDetail.BoxOffice}</p>
             <p class="subtitle">Box Office</p>
         </article>
+
         <article class="notification is-primarty">
             <p class="title">${movieDetail.Metascore}</p>
             <p class="subtitle">Metascore</p>
         </article>
+
         <article class="notification is-primarty">
             <p class="title">${movieDetail.imdbRating}</p>
             <p class="subtitle">IMDB Rating</p>
         </article>
+
         <article class="notification is-primarty">
             <p class="title">${movieDetail.imdbVotes}</p>
             <p class="subtitle">IMDB Votes</p>
