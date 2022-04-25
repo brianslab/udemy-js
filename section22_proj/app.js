@@ -60,16 +60,39 @@ const createMaze = (r, c) => {
     grid[r][c] = true;
     // assemble random list of neighbor
     const neighbors = shuffleArray([
-        [ r - 1, c ],
-        [ r, c + 1 ],
-        [ r + 1, c ],
-        [ r, c - 1 ]
+        [ r - 1, c, 'up' ],
+        [ r, c + 1, 'right' ],
+        [ r + 1, c, 'down' ],
+        [ r, c - 1, 'left' ]
     ]);
     // for each neighbor:
-    // see if that neighbor is out of bounds
-    // if neighbor has been visited, continue to next neighbor
-    // remove wall from horizontals or verticals
+    for (let neighbor of neighbors) {
+        const [ nextRow, nextColumn, direction ] = neighbor;
+        // see if that neighbor is out of bounds
+        if (
+            nextRow < 0 ||
+            nextRow >= cells ||
+            nextColumn < 0 ||
+            nextColumn >= cells
+        ) {
+            continue;
+        }
+        // if neighbor has been visited, continue to next neighbor
+        if (grid[nextRow][nextColumn]) {
+            continue;
+        }
+        // remove wall from horizontals or verticals
+        if (direction === 'left') {
+            verticals[r][c - 1] = true;
+        } else if (direction === 'right') {
+            verticals[r][c] = true;
+        } else if (direction === 'up') {
+            horizontals[r - 1][c] = true;
+        } else if (direction === 'down') {
+            horizontals[r][c] = true;
+        }
+    }
     // visit that cell
 };
 
-createMaze(startRow, startCol);
+createMaze(startRow, startRow);
