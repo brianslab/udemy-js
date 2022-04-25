@@ -28,6 +28,18 @@ const walls = [
 World.add(world, walls);
 
 // Maze generation
+const shuffleArray = (arr) => {
+    let counter = arr.length;
+    while (counter > 0) {
+        const index = Math.floor(Math.random() * counter);
+        counter--;
+        const temp = arr[counter];
+        arr[counter] = arr[index];
+        arr[index] = temp;
+    }
+
+    return arr;
+};
 const grid = Array(cells).fill(null).map(() => Array(cells).fill(false));
 const verticals = Array(cells)
     .fill(null)
@@ -39,10 +51,20 @@ const horizontals = Array(cells - 1)
 const startRow = Math.floor(Math.random() * cells);
 const startCol = Math.floor(Math.random() * cells);
 
-const createMaze = (row, column) => {
+const createMaze = (r, c) => {
     // if cell has been visitied at [row, column], then return
+    if (grid[r][c]) {
+        return;
+    }
     // mark this cell as being visited
+    grid[r][c] = true;
     // assemble random list of neighbor
+    const neighbors = shuffleArray([
+        [ r - 1, c ],
+        [ r, c + 1 ],
+        [ r + 1, c ],
+        [ r, c - 1 ]
+    ]);
     // for each neighbor:
     // see if that neighbor is out of bounds
     // if neighbor has been visited, continue to next neighbor
