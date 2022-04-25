@@ -35,3 +35,19 @@ const verticals = Array(cells)
 const horizontals = Array(cells - 1)
     .fill(null)
     .map(() => Array(cells).fill(false));
+
+const startRow = Math.floor(Math.random() * cells);
+const startCol = Math.floor(Math.random() * cells);
+
+const createMaze = (row, column) => {
+    // if cell has been visitied at [row, column], then return
+    // mark this cell as being visited
+    // assemble random list of neighbor
+    // for each neighbor:
+    // see if that neighbor is out of bounds
+    // if neighbor has been visited, continue to next neighbor
+    // remove wall from horizontals or verticals
+    // visit that cell
+};
+
+createMaze(startRow, startCol);
