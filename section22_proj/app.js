@@ -4,6 +4,8 @@ const width = 600;
 const height = width;
 const cells = 3;
 
+const unitLength = width / cells;
+
 const engine = Engine.create();
 const { world } = engine;
 const render = Render.create({
@@ -98,3 +100,36 @@ const createMaze = (r, c) => {
 };
 
 createMaze(startRow, startRow);
+
+horizontals.forEach((r, rowIndex) => {
+    r.forEach((open, columnIndex) => {
+        if (open) {
+            return;
+        }
+
+        const wall = Bodies.rectangle(
+            columnIndex * unitLength + unitLength / 2,
+            rowIndex * unitLength + unitLength,
+            unitLength,
+            10,
+            { isStatic: true }
+        );
+        World.add(world, wall);
+    });
+});
+verticals.forEach((r, rowIndex) => {
+    r.forEach((open, columnIndex) => {
+        if (open) {
+            return;
+        }
+
+        const wall = Bodies.rectangle(
+            columnIndex * unitLength + unitLength,
+            rowIndex * unitLength + unitLength / 2,
+            10,
+            unitLength,
+            { isStatic: true }
+        );
+        World.add(world, wall);
+    });
+});
