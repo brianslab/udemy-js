@@ -91,6 +91,8 @@ const createMaze = (r, c) => {
         } else if (direction === 'down') {
             horizontals[r][c] = true;
         }
+
+        createMaze(nextRow, nextColumn);
     }
     // visit that cell
 };
