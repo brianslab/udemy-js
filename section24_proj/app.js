@@ -1,3 +1,9 @@
-const message = require('./myscript.js');
+const fs = require('fs');
 
-console.log(message);
+fs.readdir('.', (err, fileNames) => {
+    if (err) {
+        console.log(err);
+    }
+
+    console.log(fileNames);
+});
