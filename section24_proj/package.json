@@ -2,6 +2,7 @@
   "name": "section24_proj",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,5 +12,8 @@
   "license": "ISC",
   "bin": {
     "nls": "app.js"
+  },
+  "dependencies": {
+    "chalk": "^5.0.1"
   }
 }

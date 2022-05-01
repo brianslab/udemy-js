@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 
-const fs = require('fs');
-const util = require('util');
+import fs from 'fs';
+import util from 'util';
+import chalk from 'chalk';
 
 const { lstat } = fs.promises;
 
@@ -19,6 +20,10 @@ fs.readdir(process.cwd(), async (err, filenames) => {
     for (let stats of allStats) {
         const index = allStats.indexOf(stats);
 
-        console.log(filenames[index], stats.isFile());
+        if (stats.isFile()) {
+            console.log(chalk.green(filenames[index]));
+        } else {
+            console.log(chalk.blue(filenames[index]));
+        }
     }
 });
