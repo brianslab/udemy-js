@@ -1,21 +1,24 @@
 #!/usr/bin/env node
 
 const fs = require('fs');
+const util = require('util');
 
-fs.readdir(process.cwd(), (err, fileNames) => {
+const { lstat } = fs.promises;
+
+fs.readdir(process.cwd(), async (err, filenames) => {
     if (err) {
         console.log(err);
     }
 
-    // THE BAD WAY!
-    for (let filename of fileNames) {
-        fs.lstat(filename, (err, stats) => {
-            if (err) {
-                console.log(err);
-            }
+    const statPromises = filenames.map((filename) => {
+        return lstat(filename);
+    });
 
-            console.log(filename, stats.isFile());
-        });
+    const allStats = await Promise.all(statPromises);
+
+    for (let stats of allStats) {
+        const index = allStats.indexOf(stats);
+
+        console.log(filenames[index], stats.isFile());
     }
-    // BAD CODE END
 });

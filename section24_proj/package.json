@@ -9,7 +9,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "bin" : {
+  "bin": {
     "nls": "app.js"
   }
 }
