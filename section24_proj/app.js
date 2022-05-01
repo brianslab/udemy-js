@@ -7,5 +7,15 @@ fs.readdir(process.cwd(), (err, fileNames) => {
         console.log(err);
     }
 
-    console.log(fileNames);
+    // THE BAD WAY!
+    for (let filename of fileNames) {
+        fs.lstat(filename, (err, stats) => {
+            if (err) {
+                console.log(err);
+            }
+
+            console.log(filename, stats.isFile());
+        });
+    }
+    // BAD CODE END
 });
