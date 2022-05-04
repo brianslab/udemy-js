@@ -1,45 +1,7 @@
 [
   {
-    "email": "test@test.com"
-  },
-  {
-    "email": "newemail@cooldomain.com",
-    "password": "abcdefg",
-    "id": "79eb1716"
-  },
-  {
-    "email": "testing@nice.com",
-    "password": "password",
-    "id": "2073b899"
-  },
-  {
     "email": "test@hash.com",
-    "password": "b6cbc9643eda2d85086fd3891ef5f22773be4467d33acac0be4f27244a8a48c9aa893c962370661fbb2bcae4b802d45aabce280ae8422744391333c428c3274f.bfd50823b9b2182e",
-    "id": "4cd2230c"
-  },
-  {
-    "email": "newacc@hi.com",
-    "password": "2c6f188ee359b697d19b2040e4184a26b4112d3d87c9fda5e0a693208140e44c804a7b10f974e3c048e3510813bfee7498191f828f3033140ec3c3f6e04e8047.da26ab0846c3baf5",
-    "id": "ba1a5e70"
-  },
-  {
-    "email": "test@hash.com",
-    "password": "4aeb9de18691d223acc3c69d4e3877cee3b4287cf81bd2b0d18145fcde9d16deb52e6a94ccca561134a69f2564407574aa887285bb8a2ff375b14ff6342a43b4.76565cef9d8f871c",
-    "id": "5c9342b9"
-  },
-  {
-    "email": "test@hash.com",
-    "password": "173085e11356ae249e7e284ce2e192315ce0a15cb1b2326b5f018f5c944d398cbaae29dfd66fb4c4ee91c07520cf881be81104d8bde5670c1d835492cf40dde9.ba0bd215311ca346",
-    "id": "b3832636"
-  },
-  {
-    "email": "test@hash.com",
-    "password": "f059e690a96ea249d0a0b67f6ec7a2b0195e19ddd69c5e64c78da6c89e2d6f799f83fd60764d7b9c00f771761c00250817bbaf148a0489cdec7746c5ecf3459c.db743892839b097f",
-    "id": "bb1354ab"
-  },
-  {
-    "email": "sdfadsf@asdasd.com",
-    "password": "bd88449ccf7cbe8553eee81db79235b7d6d783fadbab1d504ce1855d8ac6a58bf061ec3ed09c89bca4b6fc7263da423a1b3fa28b660bfec23660a23a06e1b26c.f4bf4851cbe357a8",
-    "id": "bb7febdf"
+    "password": "7103b9f19a6adab5549f41aad8d6896fc27335bda62202c02a9e0beee308ec264f4fe96ead364d9bad1b0dd9c573a44522c692e8a2deac1efff7bbc5817689c0.f087e9d639685a87",
+    "id": "7aed1519"
   }
 ]
