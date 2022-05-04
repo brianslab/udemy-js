@@ -6,5 +6,10 @@
     "email": "newemail@cooldomain.com",
     "password": "abcdefg",
     "id": "79eb1716"
+  },
+  {
+    "email": "testing@nice.com",
+    "password": "password",
+    "id": "2073b899"
   }
 ]
