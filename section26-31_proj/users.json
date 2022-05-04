@@ -16,5 +16,10 @@
     "email": "test@hash.com",
     "password": "b6cbc9643eda2d85086fd3891ef5f22773be4467d33acac0be4f27244a8a48c9aa893c962370661fbb2bcae4b802d45aabce280ae8422744391333c428c3274f.bfd50823b9b2182e",
     "id": "4cd2230c"
+  },
+  {
+    "email": "newacc@hi.com",
+    "password": "2c6f188ee359b697d19b2040e4184a26b4112d3d87c9fda5e0a693208140e44c804a7b10f974e3c048e3510813bfee7498191f828f3033140ec3c3f6e04e8047.da26ab0846c3baf5",
+    "id": "ba1a5e70"
   }
 ]
