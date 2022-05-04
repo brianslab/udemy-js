@@ -11,5 +11,10 @@
     "email": "testing@nice.com",
     "password": "password",
     "id": "2073b899"
+  },
+  {
+    "email": "test@hash.com",
+    "password": "b6cbc9643eda2d85086fd3891ef5f22773be4467d33acac0be4f27244a8a48c9aa893c962370661fbb2bcae4b802d45aabce280ae8422744391333c428c3274f.bfd50823b9b2182e",
+    "id": "4cd2230c"
   }
 ]
