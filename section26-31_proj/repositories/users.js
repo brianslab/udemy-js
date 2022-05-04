@@ -49,9 +49,9 @@ class UsersRepository {
         // saved -> password saved in db: "hashed.salt"
         // supplied -> password given by user trying to signin
         const [ hashed, salt ] = saved.split('.');
-        const hashedSupplied = await scrypt(supplied, salt, 64);
+        const hashedSuppliedBuff = await scrypt(supplied, salt, 64);
 
-        return hashedSupplied === hashed;
+        return hashedSuppliedBuff.toString('hex') === hashed;
     }
 
     async writeAll (records) {
