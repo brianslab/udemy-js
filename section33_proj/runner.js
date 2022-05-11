@@ -25,7 +25,6 @@ class Runner {
             try {
                 require(file.name);
             } catch (err) {
-                console.log('ERROR LOADING FILE', file.name);
                 console.log(err);
             }
         }
