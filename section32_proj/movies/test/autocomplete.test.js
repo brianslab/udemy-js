@@ -18,4 +18,7 @@ it('Shows an autocomplete', () => {
             return movie.Title;
         }
     });
+
+    const dropdown = document.querySelector('.dropdown');
+    expect(dropdown.className).not.to.include('is-active');
 });
